@@ -1,12 +1,16 @@
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import { createLogger } from 'redux-logger';
-//import rootReducer from '../reducers';
-//import rootSaga from '../sagas';;
+import rootSaga from './saga';
 import createSagaMiddleware from 'redux-saga';
 
 const sagaMiddleware = createSagaMiddleware();
 
+import { default as fileUpload } from 'file-upload/reducer';
+import { default as bounty } from 'bounty/reducer';
+
 const rootReducer = combineReducers({
+    fileUpload,
+    bounty,
 });
 
 export default function configureStore(initialState) {
@@ -18,7 +22,7 @@ export default function configureStore(initialState) {
         ),
     );
 
-    //sagaMiddleware.run(rootSaga);
+    sagaMiddleware.run(rootSaga);
 
     /*j
     if (module.hot) {
