@@ -1,4 +1,4 @@
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { call, put, takeLatest, select } from 'redux-saga/effects';
 import { PROCESS_FILE_UPLOAD, addJournalFile, addJournalEntry } from './actions';
 
 function readFileAsync(file) {
@@ -28,8 +28,10 @@ function readFileAsync(file) {
 function* processFileUpload(action) {
     try {
         const files = action.payload.files;
-        const parsedFiles = yield files.map(file => call(readFileAsync, file));
-        console.log(parsedFiles);
+        const alreadyProcessed = yield select(state => state.fileUpload.processed);
+        const parsedFiles = yield files
+            .filter(file => !alreadyProcessed[file.name])
+            .map(file => call(readFileAsync, file));
         for (let parsedFile of parsedFiles) {
             yield put(addJournalFile(parsedFile.entries, parsedFile.filename));
             //for (let entry of parsedFile.entries) {
