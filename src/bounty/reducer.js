@@ -3,7 +3,7 @@ import { ADD_JOURNAL_FILE, ADD_JOURNAL_ENTRY } from 'file-upload/actions';
 function filterAndSum(entries, eventType, selector) {
     return entries
         .filter(e => e.event === eventType)
-        .map(selector)
+        .map(e => selector(e) || 0)
         .reduce((s, x) => s + x, 0);
 }
 
