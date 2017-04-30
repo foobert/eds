@@ -1,5 +1,5 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-import { PROCESS_FILE_UPLOAD, addJournalEntry } from './actions';
+import { PROCESS_FILE_UPLOAD, addJournalFile, addJournalEntry } from './actions';
 
 function readFileAsync(file) {
     return new Promise((resolve, reject) => {
@@ -31,9 +31,10 @@ function* processFileUpload(action) {
         const parsedFiles = yield files.map(file => call(readFileAsync, file));
         console.log(parsedFiles);
         for (let parsedFile of parsedFiles) {
-            for (let entry of parsedFile.entries) {
-                yield put(addJournalEntry(entry, parsedFile.filename));
-            }
+            yield put(addJournalFile(parsedFile.entries, parsedFile.filename));
+            //for (let entry of parsedFile.entries) {
+                //yield put(addJournalEntry(entry, parsedFile.filename));
+            //}
         }
     } catch (err) {
         console.log(err);
