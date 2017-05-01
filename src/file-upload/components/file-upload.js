@@ -17,6 +17,7 @@ export default function FileUpload(props) {
             <Dropzone onDrop={handleDrop} className={styles.drop}>
                 <Panel className={styles.dropPanel}>Drop files here</Panel>
             </Dropzone>
+            { props.fileUpload.processing ? ('processing ' + props.fileUpload.todo + ' files') : 'idle' }
         </div>
     );
 }

@@ -6,6 +6,7 @@ import * as actions from './actions';
 
 function mapStateToProps(state) {
     return {
+        fileUpload: state.fileUpload,
     }
 }
 

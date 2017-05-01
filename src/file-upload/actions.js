@@ -9,6 +9,27 @@ export function processFileUpload(files) {
     };
 }
 
+export const PROCESS_FILE_UPLOAD_START = 'PROCESS_FILE_UPLOAD_START';
+
+export function processFileUploadStart(todo) {
+    return {
+        type: PROCESS_FILE_UPLOAD_START,
+        payload: {
+            todo,
+        },
+    };
+}
+
+export const PROCESS_FILE_UPLOAD_COMPLETE = 'PROCESS_FILE_UPLOAD_COMPLETE';
+
+export function processFileUploadComplete() {
+    return {
+        type: PROCESS_FILE_UPLOAD_COMPLETE,
+        payload: {
+        },
+    };
+}
+
 export const ADD_JOURNAL_FILE = 'ADD_JOURNAL_FILE';
 
 export function addJournalFile(entries, filename) {
