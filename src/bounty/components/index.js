@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 
 export default class Bounty extends React.Component {
     componentDidMount() {
@@ -10,20 +11,28 @@ export default class Bounty extends React.Component {
     }
 
     updatePlot() {
+        const x = this.props.bounty.timeline.map(data => moment(data.datestamp).format('ddd, YYYY-MM-DD'));
         const rewarded = {
-            x: this.props.bounty.timeline.map(data => data.datestamp.toString()),
+            x,
             y: this.props.bounty.timeline.map(data => data.rewarded),
             name: 'Rewarded',
             type: 'bar',
         };
         const collected = {
-            x: this.props.bounty.timeline.map(data => data.datestamp.toString()),
+            x,
             y: this.props.bounty.timeline.map(data => data.collected),
             name: 'Collected',
             type: 'bar',
         };
         const data = [rewarded, collected];
-        Plotly.newPlot('plot', data, {});
+        Plotly.newPlot('plot', data, {
+            yaxis: {
+                title: 'Credits',
+            },
+            xaxis: {
+                title: 'Day',
+            },
+        });
     }
 
     render() {

@@ -21,6 +21,12 @@ export default class Docking extends React.Component {
             },
         }];
         Plotly.newPlot('plot2', data, {
+            xaxis: {
+                title: 'Seconds to dock',
+            },
+            yaxis: {
+                title: 'Count',
+            },
         });
     }
 
