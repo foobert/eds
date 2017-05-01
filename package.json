@@ -1,13 +1,14 @@
 {
   "name": "elite-stats",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.1.0",
+  "description": "Elite Dangerous Statistics",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "$(npm bin)/webpack --optimize-minimize --define process.env.NODE_ENV=\"'production'\"",
+    "start": "$(npm bin)/webpack-dev-server"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "0x002a@gmail.com",
+  "license": "MIT",
   "dependencies": {
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",

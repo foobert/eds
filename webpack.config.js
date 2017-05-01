@@ -7,7 +7,7 @@ module.exports = {
         './src/index',
     ],
     output: {
-        path: path.resolve(__dirname, 'build'),
+        path: path.resolve(__dirname, 'assets'),
         filename: 'bundle.js',
         publicPath: '/assets/',
     },
@@ -47,7 +47,7 @@ module.exports = {
     },
     devtool: "source-map",
     devServer: {
-        contentBase: path.join(__dirname, 'build'),
+        contentBase: __dirname,
         compress: true,
         historyApiFallback: true,
         hot: true,
