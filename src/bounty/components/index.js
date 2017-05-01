@@ -23,12 +23,13 @@ export default class Bounty extends React.Component {
             type: 'bar',
         };
         const data = [rewarded, collected];
-        Plotly.newPlot('plot', data, {margin: {t: 0 }});
+        Plotly.newPlot('plot', data, {});
     }
 
     render() {
         return (
             <div>
+                <h2>Bounty Statistics</h2>
                 <p>Rewarded: {this.props.bounty.rewarded}</p>
                 <p>Collected: {this.props.bounty.collected}</p>
                 <div id='plot'></div>

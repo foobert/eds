@@ -27,7 +27,8 @@ export default class Docking extends React.Component {
     render() {
         return (
             <div>
-                <div>{this.props.docking.durations.length}</div>
+                <h2>Docking Statistics</h2>
+                <div>Completed Dockings: {this.props.docking.durations.length}</div>
                 <div id='plot2'/>
             </div>
         );

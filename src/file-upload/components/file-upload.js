@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Dropzone from 'react-dropzone';
+import { Panel } from 'react-bootstrap';
+
+import styles from './styles.css';
 
 export default function FileUpload(props) {
     const handleDrop = (files, rejected) => {
@@ -11,7 +14,9 @@ export default function FileUpload(props) {
 
     return (
         <div>
-            <Dropzone onDrop={handleDrop}/>
+            <Dropzone onDrop={handleDrop} className={styles.drop}>
+                <Panel className={styles.dropPanel}>Drop files here</Panel>
+            </Dropzone>
         </div>
     );
 }
