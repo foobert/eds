@@ -7,10 +7,12 @@ const sagaMiddleware = createSagaMiddleware();
 
 import { default as fileUpload } from 'file-upload/reducer';
 import { default as bounty } from 'bounty/reducer';
+import { default as docking } from 'docking/reducer';
 
 const rootReducer = combineReducers({
     fileUpload,
     bounty,
+    docking,
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

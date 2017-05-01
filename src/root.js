@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 
 import { Component as FileUpload } from 'file-upload';
 import { Component as Bounty } from 'bounty';
+import { Component as Docking } from 'docking';
 
 export default function Root(props) {
     return (
@@ -11,6 +12,7 @@ export default function Root(props) {
             <div>
                 <FileUpload/>
                 <Bounty/>
+                <Docking/>
             </div>
         </Provider>
     );
